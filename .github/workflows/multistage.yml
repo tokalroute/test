@@ -1,0 +1,14 @@
+name: Myltistage env:
+on: [Push]
+jobs:
+  stage-1-prepare:
+    runs-on: ubuntu-latest
+    steps: 
+     -name: prepare-messege
+     run: echo "${{github.actor}} Welcome our project"
+  stage-2-greet:
+    needs: stage-1-prepare
+    runs-on: ubuntu-latest
+    steps: 
+     -name: prepare-messege
+     run: echo "${{needs.stage-1-prepare.outputs}} Welcome our project"
